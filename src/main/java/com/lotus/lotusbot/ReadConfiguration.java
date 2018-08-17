@@ -1,8 +1,6 @@
 package com.lotus.lotusbot;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class ReadConfiguration {
@@ -21,6 +19,13 @@ public class ReadConfiguration {
             if(!configFile.exists()){
                 try {
                     configFile.createNewFile();
+                    FileWriter fileW = new FileWriter(configFile);
+                    BufferedWriter buffW = new BufferedWriter(fileW);
+                    buffW.write("BotToken: (insert token here)");
+                    buffW.newLine();
+                    buffW.write("BotPrefix: lotus-");
+                    buffW.close();
+
                     load();
                 } catch(Exception e){
                     //e.printStackTrace();
