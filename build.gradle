@@ -1,0 +1,36 @@
+plugins {
+    id 'org.spongepowered.plugin' version '0.8.1'
+}
+
+group 'com.lotus.lotusbot'
+version '1.0-Dev'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
+    jcenter()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.lotus.lotusbot.LotusBot'
+        )
+    }
+    from {
+        configurations.runtime.collect { it.directory ? it : zipTree(it)
+        }
+    }
+}
+
+dependencies {
+    compile 'org.spongepowered:spongeapi:7.1.0-SNAPSHOT'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'net.dv8tion:JDA:3.3.1_286'
+}
