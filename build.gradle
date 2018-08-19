@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.lotus.lotusbot'
-version '1.0-Dev'
+version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
