@@ -22,6 +22,7 @@ public class LotusBot {
     public static String TOKEN;
     public static String PREFIX;
     public static String JOINLEAVECHANNEL;
+    public static String AUTOJOINROLE;
 
     public static void main(String args[]) throws Exception {
 
@@ -31,6 +32,7 @@ public class LotusBot {
         //Assign Variables
         TOKEN = ReadConfiguration.config.getProperty("BotToken");
         PREFIX = ReadConfiguration.config.getProperty("BotPrefix");
+        AUTOJOINROLE = ReadConfiguration.config.getProperty("AutoJoinRole");
         JOINLEAVECHANNEL = ReadConfiguration.config.getProperty("JoinLeaveMessagesID");
 
         api = new JDABuilder(AccountType.BOT).setToken(TOKEN).buildBlocking();

@@ -21,11 +21,13 @@ public class ReadConfiguration {
                     configFile.createNewFile();
                     FileWriter fileW = new FileWriter(configFile);
                     BufferedWriter buffW = new BufferedWriter(fileW);
-                    buffW.write("BotToken: (insert token here)");
+                    buffW.write("BotToken: (Token)");
                     buffW.newLine();
                     buffW.write("BotPrefix: lotus-");
                     buffW.newLine();
-                    buffW.write("JoinLeaveMessagesID: lotus-");
+                    buffW.write("JoinLeaveMessagesID: (ChannelID)");
+                    buffW.newLine();
+                    buffW.write("AutoJoinRole: (Role ID)");
                     buffW.close();
 
                     load();
