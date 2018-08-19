@@ -24,6 +24,8 @@ public class ReadConfiguration {
                     buffW.write("BotToken: (insert token here)");
                     buffW.newLine();
                     buffW.write("BotPrefix: lotus-");
+                    buffW.newLine();
+                    buffW.write("JoinLeaveMessagesID: lotus-");
                     buffW.close();
 
                     load();

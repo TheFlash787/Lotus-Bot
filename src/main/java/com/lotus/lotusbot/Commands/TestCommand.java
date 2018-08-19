@@ -11,6 +11,7 @@ public class TestCommand extends ListenerAdapter {
 
     public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getMessage().getContent().equals(PREFIX + "ping")){
+
             event.getChannel().sendMessage("pong").queue();
         }
     }
