@@ -27,9 +27,10 @@ public class ReadConfiguration {
                     buffW.newLine();
                     buffW.write("JoinLeaveMessagesID: (ChannelID)");
                     buffW.newLine();
+                    buffW.write("LogChannelID: (ChannelID)");
+                    buffW.newLine();
                     buffW.write("AutoJoinRole: (Role ID)");
                     buffW.close();
-
                     load();
                 } catch(Exception e){
                     //e.printStackTrace();

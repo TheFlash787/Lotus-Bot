@@ -21,8 +21,9 @@ public class LotusBot {
     public static JDA api;
     public static String TOKEN;
     public static String PREFIX;
-    public static String JOINLEAVECHANNEL;
+    public static TextChannel JOINLEAVECHANNEL;
     public static String AUTOJOINROLE;
+    public static TextChannel LOGCHANNEL;
 
     public static void main(String args[]) throws Exception {
 
