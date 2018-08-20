@@ -1,21 +1,15 @@
 package com.lotus.lotusbot;
 
-import com.google.inject.Inject;
-import com.lotus.lotusbot.Commands.TestCommand;
+import com.jagrosh.jdautilities.command.CommandClient;
+import com.jagrosh.jdautilities.command.CommandClientBuilder;
+import com.lotus.lotusbot.Commands.CommandHandler;
+import com.lotus.lotusbot.Commands.PurgeCommand;
 import com.lotus.lotusbot.Events.GuildMemberEvents;
-import com.lotus.lotusbot.Events.ReadyEvent;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.exceptions.RateLimitedException;
-import ninja.leaping.configurate.commented.CommentedConfigurationNode;
-import ninja.leaping.configurate.loader.ConfigurationLoader;
-import org.spongepowered.api.config.DefaultConfig;
-
-import javax.security.auth.login.LoginException;
-import java.io.File;
-import java.io.FileReader;
-import java.util.Properties;
+import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.core.entities.TextChannel;
 
 public class LotusBot {
     public static JDA api;
@@ -34,15 +28,19 @@ public class LotusBot {
         TOKEN = ReadConfiguration.config.getProperty("BotToken");
         PREFIX = ReadConfiguration.config.getProperty("BotPrefix");
         AUTOJOINROLE = ReadConfiguration.config.getProperty("AutoJoinRole");
-        JOINLEAVECHANNEL = ReadConfiguration.config.getProperty("JoinLeaveMessagesID");
 
+        //CommandHandler
+        //Init API
         api = new JDABuilder(AccountType.BOT).setToken(TOKEN).buildBlocking();
-        api.addEventListener(new TestCommand());
+        api.addEventListener(CommandHandler.getClient());
         api.addEventListener(new GuildMemberEvents());
         //api.addEventListener(new ReadyEvent());
 
+        LOGCHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("LogChannelID"));
+        JOINLEAVECHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("JoinLeaveMessagesID"));
+
         System.out.println("Bot Token: " + TOKEN);
         System.out.println("Bot Prefix: " + PREFIX);
-        System.out.println("Join-Leave Channel Name: " + LotusBot.api.getTextChannelById(JOINLEAVECHANNEL).getName());
+        System.out.println("Join-Leave Channel Name: " + JOINLEAVECHANNEL.getName());
     }
 }
