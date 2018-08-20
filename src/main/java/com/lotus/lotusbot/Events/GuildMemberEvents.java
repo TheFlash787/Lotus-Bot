@@ -14,7 +14,7 @@ public class GuildMemberEvents extends ListenerAdapter {
     public void onGuildMemberJoin(GuildMemberJoinEvent event){
         //Join Message
         String JOINMESSAGE = "**" + event.getMember().getAsMention() + "** has just joined **" + event.getGuild().getName() + "!** We hope you enjoy your stay!";
-        LotusBot.api.getTextChannelById(JOINLEAVECHANNEL).sendMessage(JOINMESSAGE).queue();
+        JOINLEAVECHANNEL.sendMessage(JOINMESSAGE).queue();
 
         //Add the role
         Role JR = api.getRoleById(LotusBot.AUTOJOINROLE);
@@ -24,7 +24,7 @@ public class GuildMemberEvents extends ListenerAdapter {
     public void onGuildMemberLeave(GuildMemberLeaveEvent event){
         //Leave Message
         String LEAVEMESSAGE = "**" + event.getMember().getEffectiveName() + "** has just left **" + event.getGuild().getName() + "**. Bye Bye!";
-        LotusBot.api.getTextChannelById(JOINLEAVECHANNEL).sendMessage(LEAVEMESSAGE).queue();
+        JOINLEAVECHANNEL.sendMessage(LEAVEMESSAGE).queue();
 
     }
 }
