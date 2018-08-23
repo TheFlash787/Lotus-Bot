@@ -11,6 +11,8 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.entities.TextChannel;
 
+import static com.lotus.lotusbot.Events.GuildMemberEvents.JR;
+
 public class LotusBot {
     public static JDA api;
     public static String TOKEN;
@@ -36,11 +38,14 @@ public class LotusBot {
         api.addEventListener(new GuildMemberEvents());
         //api.addEventListener(new ReadyEvent());
 
+
         LOGCHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("LogChannelID"));
         JOINLEAVECHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("JoinLeaveMessagesID"));
 
         System.out.println("Bot Token: " + TOKEN);
         System.out.println("Bot Prefix: " + PREFIX);
         System.out.println("Join-Leave Channel Name: " + JOINLEAVECHANNEL.getName());
+        System.out.println("Auto-Join Role" + JR.getName());
+        System.out.println("Activity-Log Channel: " + LOGCHANNEL.getName());
     }
 }

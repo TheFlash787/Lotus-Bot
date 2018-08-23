@@ -11,13 +11,14 @@ import static com.lotus.lotusbot.LotusBot.api;
 
 public class GuildMemberEvents extends ListenerAdapter {
 
+    public static Role JR = api.getRoleById(LotusBot.AUTOJOINROLE);
+
     public void onGuildMemberJoin(GuildMemberJoinEvent event){
         //Join Message
         String JOINMESSAGE = "**" + event.getMember().getAsMention() + "** has just joined **" + event.getGuild().getName() + "!** We hope you enjoy your stay!";
         JOINLEAVECHANNEL.sendMessage(JOINMESSAGE).queue();
 
         //Add the role
-        Role JR = api.getRoleById(LotusBot.AUTOJOINROLE);
         event.getMember().getRoles().add(JR);
     }
 
