@@ -11,6 +11,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 import java.awt.*;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +48,7 @@ public class PurgeCommand extends Command {
             EmbedBuilder embed = new EmbedBuilder();
             embed.setTitle("**" + event.getAuthor().getName() + "** tried to use the purge command but did not have permission to do so.");
             embed.setColor(Color.red);
+            embed.setTimestamp(Calendar.getInstance().getTime().toInstant());
 
             LOGCHANNEL.sendMessage(embed.build()).queue();
         }
@@ -63,6 +65,7 @@ public class PurgeCommand extends Command {
             EmbedBuilder embed = new EmbedBuilder();
             embed.setTitle("**" + event.getAuthor().getName() + "** tried to use the purge command but did not include an amount.");
             embed.setColor(Color.red);
+            embed.setTimestamp(Calendar.getInstance().getTime().toInstant());
 
             LOGCHANNEL.sendMessage(embed.build()).queue();
         }
