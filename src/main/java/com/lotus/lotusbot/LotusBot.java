@@ -4,6 +4,7 @@ import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.lotus.lotusbot.Commands.CommandHandler;
 import com.lotus.lotusbot.Commands.PurgeCommand;
+import com.lotus.lotusbot.Events.ChannelEvents;
 import com.lotus.lotusbot.Events.GuildMemberEvents;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -36,6 +37,7 @@ public class LotusBot {
         api = new JDABuilder(AccountType.BOT).setToken(TOKEN).buildBlocking();
         api.addEventListener(CommandHandler.getClient());
         api.addEventListener(new GuildMemberEvents());
+        api.addEventListener(new ChannelEvents());
         //api.addEventListener(new ReadyEvent());
 
 
@@ -44,8 +46,8 @@ public class LotusBot {
 
         System.out.println("Bot Token: " + TOKEN);
         System.out.println("Bot Prefix: " + PREFIX);
-        System.out.println("Join-Leave Channel Name: " + JOINLEAVECHANNEL.getName());
-        System.out.println("Auto-Join Role" + JR.getName());
-        System.out.println("Activity-Log Channel: " + LOGCHANNEL.getName());
+        System.out.println("Join-Leave Channel Name: #" + JOINLEAVECHANNEL.getName());
+        System.out.println("Auto-Join Role: " + JR.getName());
+        System.out.println("Activity-Log Channel: #" + LOGCHANNEL.getName());
     }
 }
