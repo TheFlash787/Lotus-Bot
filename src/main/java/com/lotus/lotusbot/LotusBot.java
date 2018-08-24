@@ -6,6 +6,7 @@ import com.lotus.lotusbot.Commands.CommandHandler;
 import com.lotus.lotusbot.Commands.PurgeCommand;
 import com.lotus.lotusbot.Events.ChannelEvents;
 import com.lotus.lotusbot.Events.GuildMemberEvents;
+import com.lotus.lotusbot.Events.MessageEvents;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
@@ -21,6 +22,7 @@ public class LotusBot {
     public static TextChannel JOINLEAVECHANNEL;
     public static String AUTOJOINROLE;
     public static TextChannel LOGCHANNEL;
+    public static TextChannel RELAYCHANNEL;
 
     public static void main(String args[]) throws Exception {
 
@@ -38,10 +40,12 @@ public class LotusBot {
         api.addEventListener(CommandHandler.getClient());
         api.addEventListener(new GuildMemberEvents());
         api.addEventListener(new ChannelEvents());
+        api.addEventListener(new MessageEvents());
         //api.addEventListener(new ReadyEvent());
 
 
         LOGCHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("LogChannelID"));
+        RELAYCHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("RelayChannelID"));
         JOINLEAVECHANNEL = api.getTextChannelById(ReadConfiguration.config.getProperty("JoinLeaveMessagesID"));
 
         System.out.println("Bot Token: " + TOKEN);
@@ -49,5 +53,6 @@ public class LotusBot {
         System.out.println("Join-Leave Channel Name: #" + JOINLEAVECHANNEL.getName());
         System.out.println("Auto-Join Role: " + JR.getName());
         System.out.println("Activity-Log Channel: #" + LOGCHANNEL.getName());
+        System.out.println("Channel for ChatRelay: #" + RELAYCHANNEL.getName());
     }
 }
