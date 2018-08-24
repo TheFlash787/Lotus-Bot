@@ -102,10 +102,10 @@ public class PurgeCommand extends Command {
                     msgs = history.retrievePast(getInt(args)).complete();
                     event.getTextChannel().deleteMessages(msgs).queue();
 
-                    Message answer = event.getTextChannel().sendMessage("Successfully deleted " + args + " messages!").complete();
+                    Message answer = event.getTextChannel().sendMessage("Successfully bulk deleted " + args + " messages!").complete();
 
                     EmbedBuilder embed = new EmbedBuilder();
-                    embed.setTitle("**" + event.getAuthor().getName() + "** has deleted " + args + " messages in #" + event.getChannel().getName());
+                    embed.setTitle("**" + event.getAuthor().getName() + "** has bulk deleted " + args + " messages in #" + event.getChannel().getName());
                     embed.setColor(Color.green);
 
                     LOGCHANNEL.sendMessage(embed.build()).queue();
