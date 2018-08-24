@@ -31,6 +31,8 @@ public class ReadConfiguration {
                     buffW.newLine();
                     buffW.write("AutoJoinRole: (Role ID)");
                     buffW.close();
+                    buffW.write("RelayChannelID: (Channel ID)");
+                    buffW.close();
                     load();
                 } catch(Exception e){
                     //e.printStackTrace();
